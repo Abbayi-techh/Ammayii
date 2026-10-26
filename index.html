@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Ammayi ✨ | A 4-Year Friendship Universe</title>
+  <meta name="description" content="A special 3D interactive tribute for Ammayi's birthday from Abbayi celebrating 4 years of unforgettable memories.">
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Libraries (Three.js, Lucide Icons, GSAP, Canvas Confetti) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <!-- Three.js 3D Background Canvas -->
+  <div id="three-canvas-container"></div>
+
+  <!-- Interactive Floating Cursor Trail -->
+  <div id="cursor-trail-container"></div>
+
+  <!-- Main Website Content Wrapper -->
+  <div class="content-wrapper">
+
+    <!-- Sticky Glassmorphic Header -->
+    <header class="glass-header interactive-element">
+      <a href="#" class="nav-brand">
+        <span class="brand-icon">💖</span>
+        <span class="brand-title">Ammayi & Abbayi</span>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#story" class="nav-link">Our Story</a></li>
+          <li><a href="#ai-companion" class="nav-link">Bestie AI 🤖</a></li>
+          <li><a href="#quiz-vault" class="nav-link">Memory Quiz</a></li>
+          <li><a href="#surprise" class="nav-link">Surprise Box 🎁</a></li>
+          <li><a href="#certificate-section" class="nav-link">BFF Certificate</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Ambient Music Synthesizer Toggle -->
+        <button id="music-toggle-btn" class="btn-icon-pill" title="Toggle Ambient Synth Music">
+          <i data-lucide="music"></i>
+          <span id="music-btn-text">Play Ambience</span>
+        </button>
+
+        <!-- Surprise Shortcut -->
+        <button id="header-surprise-btn" class="btn-icon-pill btn-primary">
+          <span>🎁</span>
+          <span>Open Gift</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero-section interactive-element">
+      <div class="hero-badge">
+        <span>✨</span>
+        <span>Celebrating 4 Years of Unforgettable Bond</span>
+        <span>✨</span>
+      </div>
+
+      <h1 class="hero-title">
+        <span class="hero-title-gradient">Happy Birthday</span>
+        <span class="hero-script">Ammayiii 💖</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        A dedicated 3D universe celebrating our 4-year journey from 9th grade chats to unforgettable milestones.
+      </p>
+
+      <div class="hero-quote-box">
+        <p class="hero-quote-text">
+          "Asalu em cheppalo kuda artham avvatle naaku... Gift iddhamanna edhi dho artham avvatle... 
+          Andhuke ee 3D world motham nee kosam build chesa!" 💫
+        </p>
+      </div>
+
+      <div class="hero-actions">
+        <a href="#story" class="btn-icon-pill btn-primary" style="padding: 0.85rem 1.8rem; font-size: 1rem;">
+          <i data-lucide="sparkles"></i>
+          <span>Relive Our Memories</span>
+        </a>
+        <a href="#ai-companion" class="btn-icon-pill" style="padding: 0.85rem 1.8rem; font-size: 1rem;">
+          <i data-lucide="bot"></i>
+          <span>Chat with Bestie AI</span>
+        </a>
+        <button id="hero-celebrate-btn" class="btn-icon-pill" style="padding: 0.85rem 1.8rem; font-size: 1rem; border-color: #fbbf24; color: #fbbf24;">
+          <span>🎉</span>
+          <span>Celebrate Now</span>
+        </button>
+      </div>
+
+      <div class="scroll-indicator" onclick="document.getElementById('story').scrollIntoView({behavior:'smooth'})">
+        <div class="scroll-mouse">
+          <div class="scroll-wheel"></div>
+        </div>
+        <span>Scroll to Explore Memories</span>
+      </div>
+    </section>
+
+    <!-- 3D INTERACTIVE HIGHLIGHTS BAR -->
+    <section class="section-container interactive-element" style="padding-top: 1rem; padding-bottom: 2rem;">
+      <div style="text-align: center; margin-bottom: 2rem;">
+        <span class="section-tag">Interactive 3D Constellation</span>
+        <p style="color: var(--text-dim); font-size: 0.95rem;">
+          💡 Tip: Click any glowing sphere in the 3D background or click the cards below to jump straight into that memory!
+        </p>
+      </div>
+
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.8rem;">
+        <button class="chip-btn" onclick="scrollToChapter('chap-1')">🌟 Chapter 1: 9th & 10th Days</button>
+        <button class="chip-btn" onclick="scrollToChapter('chap-2')">🎈 Chapter 2: 10th Bday Bash</button>
+        <button class="chip-btn" onclick="scrollToChapter('chap-3')">👗 Chapter 3: Talent Show (Nov 9)</button>
+        <button class="chip-btn" onclick="scrollToChapter('chap-4')">🤍 Chapter 4: White Dress & Archishma</button>
+        <button class="chip-btn" onclick="scrollToChapter('chap-5')">✨ Chapter 5: Dasara & The Promise</button>
+      </div>
+    </section>
+
+    <!-- MEMORY TIMELINE STORY SECTION (100% Data Preserved) -->
+    <section id="story" class="section-container interactive-element">
+      <div class="section-header">
+        <span class="section-tag">Chapter by Chapter</span>
+        <h2 class="section-title">Our 4-Year Journey & Memories</h2>
+        <p class="section-subtitle">
+          Every memory, every smile, and every word written from the heart.
+        </p>
+      </div>
+
+      <div class="timeline-container">
+        <div class="timeline-line"></div>
+
+        <!-- Chapter 1: 9th & 10th Class Beginnings -->
+        <div class="timeline-item" id="chap-1">
+          <div class="timeline-node-pin"></div>
+          <div class="timeline-card">
+            <span class="chapter-badge badge-pink">
+              <span>🌸</span>
+              <span>Chapter 01 • The Beginning</span>
+            </span>
+            <h3 class="chapter-title">9th & 10th Class: Where It All Started</h3>
+            
+            <div class="memory-telugu-text">
+"Ammayi!! Thank you for being my best friend since last 4 years.
+Happy Birthday Ammayiii
+
+Asalu em cheppalo kuda artham avvatle naaku
+Gift iddhamanna edhi dho artham avvatle
+
+9 th lo start ayindhi ee journey
+10 th lo koncham close ayyam
+Appatlo asalu nijanga neetho maatladaka pothe aa day edho incomplete
+Almost every day every night we used to chatt"
+            </div>
+
+            <div class="memory-telugu-text" style="border-left-color: #a855f7;">
+"Neeku gurthundho ledho
+Class lo nuv ashwini ni nen ashwin ni ankunta maatlaadinam last days
+Appdaithe entha happy ga untundeno 🥹"
+            </div>
+
+            <div class="memory-highlight-badge">
+              <span>💬</span>
+              <span>Memorable Quote: "Ashwin & Ashwini" classroom secret</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chapter 2: The Legendary 10th Birthday Bash -->
+        <div class="timeline-item" id="chap-2">
+          <div class="timeline-node-pin"></div>
+          <div class="timeline-card">
+            <span class="chapter-badge badge-purple">
+              <span>🎂</span>
+              <span>Chapter 02 • Legendary Celebration</span>
+            </span>
+            <h3 class="chapter-title">The 10th Batch Outside Birthday Bash</h3>
+            
+            <div class="memory-telugu-text">
+"Motham end ayyaka asalu evvar anukoleni bday iccha neekaithe
+10 th batch tho outside bday celebration anthe maamulga gaadhu asalu
+Girls boys even venkatesh sirr
+Aa roju okati chalu asalu mana 10 th batch ki"
+            </div>
+
+            <div class="memory-highlight-badge">
+              <span>🎉</span>
+              <span>Featuring: 10th Batch Gang & Venkatesh Sir</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chapter 3: Inter Days & Talent Show 2025 -->
+        <div class="timeline-item" id="chap-3">
+          <div class="timeline-node-pin"></div>
+          <div class="timeline-card">
+            <span class="chapter-badge badge-pink">
+              <span>💃</span>
+              <span>Chapter 03 • The Talent Show Mission</span>
+            </span>
+            <h3 class="chapter-title">Nov 9, 2025: The Red Dress & Stage Glances</h3>
+            
+            <div class="memory-telugu-text">
+"Aa tharvatha inter lo iga nen kalvathaniki maatladathaniki padda thippalu abboo
+
+2025 talent show
+Nov 9 mrng chelli cheppindhi nuv vastunnav ani
+Katam etlaina iga daddy tho maatladi malli mon ne veltha andharu vastunnaru ani edhedho cheppi sudden ga vaccha
+Digina 5 min ke start ayina scl ki
+
+Aa roju nuv red dress leaved hair lo stage deggara
+Swaroop sir deggara unnar
+Actually raangaane baaga sepu vethike kanapaddav iga akkade aagina
+Meeru vellethappudu kuda chusina kaludham ankunna kani emo thelvadhi aagi poya
+Nee tho chelli call chesindi ani cheppina sry"
+            </div>
+
+            <div class="memory-highlight-badge">
+              <span>✨</span>
+              <span>Look of the Day: Red Dress & Open Hair near Swaroop Sir</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chapter 4: The White Dress Meet & Archishma -->
+        <div class="timeline-item" id="chap-4">
+          <div class="timeline-node-pin"></div>
+          <div class="timeline-card">
+            <span class="chapter-badge badge-cyan">
+              <span>🤍</span>
+              <span>Chapter 04 • The Celebrity Moment</span>
+            </span>
+            <h3 class="chapter-title">White Dress Reunion & Photos with Archishma</h3>
+            
+            <div class="memory-telugu-text">
+"Iga next day vastav ankunte nuv raanu annav
+Ayipaye iga naaku asal almost picchekkindhi nuv raanu ane saariki
+Etlaina raavali ante dropping problem annav iga archishma ki adigina k all sett vasthunna annav
+
+First intiki rammannav vacchina backroad oka 5 min aagi vellipoya
+Aa roju white dress lo vacchav
+Atlast nee bday tharvatha malli appude meet ayyam
+Nuvvemo archishma tho vacchav maatladinam photos diginam
+Aa roju kuda naku manchi memorable day asalu
+
+Nen celebrity aa ani nuv nen avnu ani aaroju iga samaptham"
+            </div>
+
+            <div class="memory-highlight-badge">
+              <span>🌟</span>
+              <span>Iconic Dialogue: "Nen celebrity aa?" — "Avnu!"</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chapter 5: Dasara Glance & Forever Bond -->
+        <div class="timeline-item" id="chap-5">
+          <div class="timeline-node-pin"></div>
+          <div class="timeline-card">
+            <span class="chapter-badge badge-gold">
+              <span>💖</span>
+              <span>Chapter 05 • The Promise & Climax</span>
+            </span>
+            <h3 class="chapter-title">Dasara Memories & The School Days Promise</h3>
+            
+            <div class="memory-telugu-text">
+"Malli no meet
+Chat kuda edho iga
+Vacchinappudu rarely ga chat chestunde
+Middle lo malli dasara ki okasari inthi mundhu kelli vellinappudu malli chusna anthe
+
+Iga 2nd year asal total change
+Ippati nunchi ayina malli mana scl days lekka undhama plss
+
+Anyways once again HAPPY BIRTHDAY AMMAYI.."
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border-glass);">
+              <span style="font-family: var(--font-hand); font-size: 2rem; color: #f472b6;">
+                By ABBAYI 💫
+              </span>
+              <button onclick="triggerConfetti()" class="btn-icon-pill btn-primary">
+                <span>🎊</span>
+                <span>Send Birthday Love</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- AI BESTIE COMPANION SECTION -->
+    <section id="ai-companion" class="section-container interactive-element">
+      <div class="section-header">
+        <span class="section-tag">AI Best Friend Assistant</span>
+        <h2 class="section-title">Talk to "Bestie AI" 🤖</h2>
+        <p class="section-subtitle">
+          An AI assistant crafted with all of our 4-year memories. Ask about any event, get compliments, or generate friendship letters!
+        </p>
+      </div>
+
+      <div class="ai-companion-card">
+        <!-- AI Card Header -->
+        <div class="ai-card-header">
+          <div class="ai-profile">
+            <div class="ai-avatar">🤖</div>
+            <div>
+              <h4 style="font-weight: 700; color: #fff;">Ammayi's Bestie AI</h4>
+              <p style="font-size: 0.82rem; color: var(--text-dim);">
+                <span class="ai-status-dot"></span> Powered by 4-Year Memory Vault
+              </p>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 0.5rem;">
+            <button id="tts-btn" class="btn-icon-pill" title="Read AI Response Aloud">
+              <i data-lucide="volume-2"></i>
+              <span>Voice</span>
+            </button>
+            <button id="clear-chat-btn" class="btn-icon-pill" title="Clear Chat">
+              <i data-lucide="rotate-ccw"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Chat Messages Container -->
+        <div class="ai-chat-window" id="chat-window">
+          <div class="chat-bubble chat-ai">
+            💖 <strong>Hey Ammayi!</strong> I'm your personalized Bestie AI, created by Abbayi for your birthday! I remember everything from our 9th class chats, the 10th birthday bash with Venkatesh Sir, the Red Dress Talent Show day, to our White dress photos with Archishma. What would you like to talk about today? ✨
+          </div>
+        </div>
+
+        <!-- Quick AI Suggestion Chips -->
+        <div class="chat-suggestions">
+          <button class="chip-btn" onclick="sendSuggestion('Tell me the story of Nov 9 Talent Show!')">👗 Talent Show Memory</button>
+          <button class="chip-btn" onclick="sendSuggestion('What happened on White Dress & Archishma day?')">🤍 White Dress Meet</button>
+          <button class="chip-btn" onclick="sendSuggestion('Give Ammayi a lovely sweet compliment')">🌸 Sweet Compliment</button>
+          <button class="chip-btn" onclick="sendSuggestion('Roast Abbayi playfully!')">😜 Bestie Roast</button>
+          <button class="chip-btn" onclick="sendSuggestion('Why did Abbayi build this website?')">💝 Why This Gift?</button>
+        </div>
+
+        <!-- Chat Input Bar -->
+        <div class="ai-input-bar">
+          <input type="text" id="ai-user-input" class="ai-input" placeholder="Ask Bestie AI anything (e.g. 'What is our funniest memory?')..." autocomplete="off">
+          <button id="ai-send-btn" class="btn-icon-pill btn-primary" style="padding: 0.85rem 1.4rem;">
+            <i data-lucide="send"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- AI FEATURES & QUIZ VAULT -->
+    <section id="quiz-vault" class="section-container interactive-element">
+      <div class="section-header">
+        <span class="section-tag">Interactive Fun</span>
+        <h2 class="section-title">Friendship Vault & Time Machine</h2>
+        <p class="section-subtitle">
+          Test how well you remember our moments or generate customized heartfelt letters!
+        </p>
+      </div>
+
+      <div class="feature-grid">
+        <!-- Feature 1: Memory Quiz -->
+        <div class="feature-box">
+          <div>
+            <div class="feature-icon-wrapper">🎯</div>
+            <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 0.6rem; color: #fff;">Ammayi's Memory Quiz</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">
+              Take a fun 5-question trivia quiz about the Talent Show, 10th batch, and classroom memories to see your score!
+            </p>
+          </div>
+          <button id="open-quiz-btn" class="btn-icon-pill btn-primary" style="width: 100%; justify-content: center;">
+            <i data-lucide="help-circle"></i>
+            <span>Start Memory Quiz</span>
+          </button>
+        </div>
+
+        <!-- Feature 2: AI Letter Generator -->
+        <div class="feature-box">
+          <div>
+            <div class="feature-icon-wrapper">💌</div>
+            <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 0.6rem; color: #fff;">AI Friendship Letter</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">
+              Generate sweet, emotional, or funny letters from Abbayi with a single tap, customized to your mood!
+            </p>
+          </div>
+          <button id="open-letter-btn" class="btn-icon-pill" style="width: 100%; justify-content: center; border-color: var(--accent-purple);">
+            <i data-lucide="mail"></i>
+            <span>Generate Letter</span>
+          </button>
+        </div>
+
+        <!-- Feature 3: Bestie Photo Frame -->
+        <div class="feature-box">
+          <div>
+            <div class="feature-icon-wrapper">📸</div>
+            <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 0.6rem; color: #fff;">Memory Photo Vault</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">
+              View or add your favorite snapshots with customized vintage Polaroid frames and warm lighting filters.
+            </p>
+          </div>
+          <button id="open-gallery-btn" class="btn-icon-pill" style="width: 100%; justify-content: center; border-color: var(--accent-cyan);">
+            <i data-lucide="image"></i>
+            <span>Open Photo Album</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3D SURPRISE CAPSULE / GIFT BOX -->
+    <section id="surprise" class="section-container interactive-element">
+      <div class="gift-box-wrapper">
+        <span class="section-tag" style="color: var(--accent-gold);">Special Birthday Surprise</span>
+        <h2 class="section-title" style="margin: 0.5rem 0 1rem;">Tap The 3D Birthday Box! 🎁</h2>
+        <p style="color: var(--text-muted); max-width: 500px; margin: 0 auto 2rem;">
+          Abbayi has placed an unlockable secret birthday wish and celebration fireworks inside this capsule.
+        </p>
+
+        <div id="gift-box-trigger" class="gift-3d-button" title="Click to open the gift!">
+          🎁
+        </div>
+
+        <p style="margin-top: 1.5rem; color: #fcd34d; font-size: 0.95rem; font-weight: 600;">
+          ✨ Click the gift box for a grand confetti explosion! ✨
+        </p>
+      </div>
+    </section>
+
+    <!-- CERTIFICATE SECTION -->
+    <section id="certificate-section" class="section-container interactive-element">
+      <div class="section-header">
+        <span class="section-tag">Official Award</span>
+        <h2 class="section-title">The "Best Bestie of the Era" Certificate 🏆</h2>
+        <p class="section-subtitle">
+          An official certificate of lifelong friendship awarded to Ammayi.
+        </p>
+      </div>
+
+      <div class="certificate-preview" id="certificate-card">
+        <h3 class="certificate-header">Certificate of Lifelong Friendship</h3>
+        <p class="certificate-sub">Presented With Pride & Gratitude</p>
+
+        <h1 class="certificate-name">Ammayi</h1>
+
+        <p class="certificate-body">
+          For being the most wonderful, genuine, and irreplaceable best friend for over <strong>4 incredible years</strong>. 
+          Through 9th grade chats, 10th standard celebrations, Talent Show rushes, and Inter days, 
+          you have proven to be the absolute brightest star in the universe!
+        </p>
+
+        <div class="certificate-footer">
+          <div style="text-align: left;">
+            <p style="font-size: 0.85rem; color: #78350f; text-transform: uppercase; font-weight: 700;">Date of Honor</p>
+            <p style="font-size: 1rem; color: #92400e; font-weight: 600;">Every Day & Forever</p>
+          </div>
+
+          <div style="text-align: right;">
+            <p class="cert-sig-line">Abbayi</p>
+            <p class="cert-sig-title">Certified Best Friend Forever</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 2rem;">
+        <button onclick="window.print()" class="btn-icon-pill btn-primary" style="padding: 0.8rem 2rem;">
+          <i data-lucide="printer"></i>
+          <span>Print / Save Certificate</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer interactive-element">
+      <p class="footer-quote">
+        "Ippati nunchi ayina malli mana school days lekka undhama plss... 🥺💖"
+      </p>
+      <h3 style="font-family: var(--font-heading); font-size: 1.5rem; color: #fff; margin-bottom: 0.5rem;">
+        Happy Birthday Ammayi! 🎂🎉
+      </h3>
+      <p class="footer-credits">
+        Handcrafted with 3D Three.js, AI & Pure Friendship by <strong>ABBAYI</strong> • 2021 - 2026 Forever
+      </p>
+    </footer>
+
+  </div>
+
+  <!-- ==========================================================================
+       MODALS
+       ========================================================================== -->
+
+  <!-- Modal 1: Memory Quiz Modal -->
+  <div class="modal-overlay" id="quiz-modal">
+    <div class="modal-content">
+      <button class="modal-close-btn" onclick="closeModal('quiz-modal')">✕</button>
+      <div id="quiz-container">
+        <!-- Quiz content rendered dynamically via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 2: AI Letter Generator Modal -->
+  <div class="modal-overlay" id="letter-modal">
+    <div class="modal-content">
+      <button class="modal-close-btn" onclick="closeModal('letter-modal')">✕</button>
+      <h3 style="font-family: var(--font-heading); font-size: 1.6rem; color: #fff; margin-bottom: 0.5rem;">
+        💌 Custom AI Friendship Letter
+      </h3>
+      <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 1.5rem;">
+        Select the mood of the letter and let AI compose it from Abbayi:
+      </p>
+
+      <div style="display: flex; gap: 0.6rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
+        <button class="chip-btn active" onclick="generateLetterTone('heartwarming')">💖 Heartwarming</button>
+        <button class="chip-btn" onclick="generateLetterTone('nostalgic')">🥹 Nostalgic (School Days)</button>
+        <button class="chip-btn" onclick="generateLetterTone('funny')">😜 Funny / Roast</button>
+      </div>
+
+      <div id="letter-display-box" style="background: rgba(0,0,0,0.35); padding: 1.5rem; border-radius: 16px; border: 1px solid var(--border-glass-pink); color: #f8fafc; font-family: var(--font-serif); font-size: 1.05rem; line-height: 1.8; white-space: pre-line; max-height: 320px; overflow-y: auto;">
+        <!-- Letter text -->
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 0.8rem; margin-top: 1.5rem;">
+        <button id="read-letter-voice-btn" class="btn-icon-pill">
+          <i data-lucide="volume-2"></i>
+          <span>Read Aloud</span>
+        </button>
+        <button onclick="copyLetterText()" class="btn-icon-pill btn-primary">
+          <i data-lucide="copy"></i>
+          <span>Copy Letter</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 3: Photo Album Modal -->
+  <div class="modal-overlay" id="gallery-modal">
+    <div class="modal-content" style="max-width: 750px;">
+      <button class="modal-close-btn" onclick="closeModal('gallery-modal')">✕</button>
+      <h3 style="font-family: var(--font-heading); font-size: 1.6rem; color: #fff; margin-bottom: 0.5rem;">
+        📸 Memory Snapshot Gallery
+      </h3>
+      <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 1.5rem;">
+        Polaroids from our memorable meetups & celebrations. You can also upload your photos to preview them here!
+      </p>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem;" id="photo-cards-container">
+        <!-- Polaroid 1 -->
+        <div style="background: #fff; padding: 12px 12px 28px; border-radius: 6px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); transform: rotate(-2deg); text-align: center; color: #1e293b;">
+          <div style="height: 160px; background: linear-gradient(135deg, #f43f5e, #fda4af); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 3rem;">
+            👗
+          </div>
+          <p style="font-family: var(--font-hand); font-size: 1.4rem; margin-top: 8px; color: #0f172a;">Nov 9 Talent Show</p>
+          <p style="font-size: 0.75rem; color: #64748b;">Red Dress & Open Hair</p>
+        </div>
+
+        <!-- Polaroid 2 -->
+        <div style="background: #fff; padding: 12px 12px 28px; border-radius: 6px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); transform: rotate(3deg); text-align: center; color: #1e293b;">
+          <div style="height: 160px; background: linear-gradient(135deg, #38bdf8, #bae6fd); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 3rem;">
+            🤍
+          </div>
+          <p style="font-family: var(--font-hand); font-size: 1.4rem; margin-top: 8px; color: #0f172a;">White Dress Day</p>
+          <p style="font-size: 0.75rem; color: #64748b;">"Nen Celebrity aa?"</p>
+        </div>
+
+        <!-- Polaroid 3 -->
+        <div style="background: #fff; padding: 12px 12px 28px; border-radius: 6px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); transform: rotate(-1deg); text-align: center; color: #1e293b;">
+          <div style="height: 160px; background: linear-gradient(135deg, #a855f7, #e9d5ff); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 3rem;">
+            🎂
+          </div>
+          <p style="font-family: var(--font-hand); font-size: 1.4rem; margin-top: 8px; color: #0f172a;">10th Batch Bash</p>
+          <p style="font-size: 0.75rem; color: #64748b;">With Venkatesh Sir</p>
+        </div>
+      </div>
+
+      <div style="border-top: 1px solid var(--border-glass); padding-top: 1.2rem; text-align: center;">
+        <label class="btn-icon-pill btn-primary" style="cursor: pointer; display: inline-flex;">
+          <i data-lucide="upload"></i>
+          <span>Add Your Own Photo</span>
+          <input type="file" id="photo-upload-input" accept="image/*" style="display: none;">
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="audio.js"></script>
+  <script src="three-scene.js"></script>
+  <script src="ai-companion.js"></script>
+  <script src="app.js"></script>
+
+  <!-- Initialize Lucide Icons -->
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
